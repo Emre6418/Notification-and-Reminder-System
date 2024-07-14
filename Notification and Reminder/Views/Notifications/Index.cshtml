@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Notification_and_Reminder.Models.Notification>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="display: flex; align-items: center;">
+    <h1 style="margin-right: 15px;">Notification</h1>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Message)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsRead)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedAt)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Message)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsRead)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-warning">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
